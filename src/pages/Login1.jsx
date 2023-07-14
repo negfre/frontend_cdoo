@@ -10,7 +10,7 @@ export const Login1 = () => {
   const [password, setPassword] = useState("")
   const [alerta, setAlerta] = useState("")
 
-  const {setAuth} = useAuth();
+  const { auth, setAuth, cargando} = useAuth();
   const navigate = useNavigate()
 
   const handleSubmit = async e => {
@@ -30,6 +30,7 @@ export const Login1 = () => {
                 localStorage.setItem('token', data.token);
                 setAuth(data);
                 navigate('/proyectos');
+                // reload()
                 //console.log(data)
                 
               } catch (error) {

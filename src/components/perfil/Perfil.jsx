@@ -1,10 +1,10 @@
 import React from 'react'
 import { useAuth } from '../../hooks/useAuth'
-import {useProyectos} from '../../hooks/useProyectos'
+// import {useProyectos} from '../../hooks/useProyectos'
 
 
 export const Perfil = () => {
-    const {proyectos} = useProyectos()
+    // const {proyectos} = useProyectos()
   return (
         <section >
         <div className="container py-5">

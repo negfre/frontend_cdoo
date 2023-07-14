@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import {useProyectos} from '../../hooks/useProyectos';
+// import {useProyectos} from '../../hooks/useProyectos';
 import { Alerta } from '../Alerta';
 
 export const FormularioPerfil = () => {

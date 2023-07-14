@@ -4,42 +4,41 @@ import { clienteAxios } from '../config/clienteAxios';
 
 const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
+ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
   const [cargando, setCargando] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const autenticarUsuario = async () => {
-      const token = localStorage.getItem('token')
-      if (!token) {
-        setCargando(false)
-        return 
-      }
+      useEffect(() => {
+        const autenticarUsuario = async () => {
+          const token = localStorage.getItem('token')
+          if (!token) {
+            setCargando(false)
+            return 
+          }
 
-      const config = {
+          const config = {
 
-      headers: {
-           "Content-Type": "application/json",
-           Authorization: `Bearer ${token}`
-       }
-      }
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
+          }
+          }
 
-      try {
-        const { data } = await clienteAxios.get('/api/auth/perfil', config);
-        setAuth(data);
-        console.log(data);
-        navigate('/proyectos');
-        <link rel="stylesheet" to='/proyectos' />
-      } catch (error) {
-        setAuth({});
-      }
+          try {
+            const { data } = await clienteAxios('/api/auth/perfil', config);
+            setAuth(data);
+            console.log(data);
+            navigate('/proyectos');
+            } catch (error) {
+            setAuth({});
+          }
 
-      setCargando(false);
-    };
+          setCargando(false);
+        };
 
-    autenticarUsuario();
-  }, []);
+        autenticarUsuario();
+      }, []);
 
   const cerrarSesionAuth = () => {
     setAuth({});
@@ -60,5 +59,5 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export { AuthProvider };
+// export { AuthProvider };
 export default AuthContext;

@@ -5,7 +5,7 @@ import {
   Link
 } from "react-router-dom";
 import {AuthProvider} from './context/AuthProvider'
-import {ProyectosProvider} from './context/ProyectosProvider'
+// import {ProyectosProvider} from './context/ProyectosProvider'
 import React, { useReducer, useEffect } from 'react';
 import { Rutaprotegida } from "./layouts/Rutaprotegida";
 import { Perfil } from "./components/perfil/Perfil";
@@ -15,6 +15,8 @@ import { Header } from "./components/Header";
 import { FormularioPerfil } from "./components/perfil/FormularioPerfil";
 import { useAuth } from "./hooks/useAuth";
 import { Registro1 } from "./pages/Registro1";
+import { Content } from "./components/Content";
+Content
 
 
 export const App = () => {
@@ -23,16 +25,17 @@ export const App = () => {
 
             <BrowserRouter>
             <AuthProvider>
-              <ProyectosProvider>
+              {/* <ProyectosProvider> */}
                     <Routes>
 
                       <Route path="/" element={<Login1 />}>
-                        {/* <Route index element={<Login1 />} /> */}
+                        <Route index element={<Login1 />} />
                      
                       </Route>
 
 
                     <Route path="/proyectos" element={<Rutaprotegida />}>
+                        <Route index element={<Content />} />
                         <Route path="registro" element={<Registro />} /> 
                         <Route path="registro1" element={<Registro1 />} /> 
                         <Route path="perfil" element={<Perfil />} /> 
@@ -45,7 +48,7 @@ export const App = () => {
                         <Route path="editar/:id" element={<EditarProyecto />} /> */}
                   </Routes> 
 
-              </ProyectosProvider>   
+              {/* </ProyectosProvider>    */}
         
             </AuthProvider>
             </BrowserRouter>
